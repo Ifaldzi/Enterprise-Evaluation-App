@@ -39,9 +39,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        //generate username when not set
         if(!isset($request->username))
         {
-            $request->username = strtolower($request->name);
+            $username = strtok($request->name, ' ');
+            $request->username = strtolower($username);
         }
 
         $rules = [
