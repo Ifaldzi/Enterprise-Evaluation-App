@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 
 class UserAuthController extends Controller
@@ -37,8 +39,24 @@ class UserAuthController extends Controller
             return back()->withErrors($validator)->withInput($request->all());
         }
 
+        $auth = false;
+
         $credentials = $request->only('username', 'password');
         if(Auth::attempt($credentials))
+        {
+            $auth = true;
+        }
+        else
+        {
+            $user = User::where('username', '=', $request->username)->first();
+            if(Crypt::decrypt($user->password) == $request->password)
+            {
+                Auth::login($user);
+                $auth = true;
+            }
+        }
+
+        if($auth)
         {
             if(auth()->user()->is_admin)
                 return redirect(route('admin.dashboard'));
