@@ -48,4 +48,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Hasil::class);
     }
+
+    public function pertanyaan()
+    {
+        return $this->belongsToMany(Pertanyaan::class)
+            ->as('jawaban')
+            ->withTimestamps()
+            ->withPivot('jawaban');
+    }
 }

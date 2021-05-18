@@ -10,7 +10,9 @@ class Pertanyaan extends Model
     protected $table = 'pertanyaan';
 
     protected $fillable = [
-        'pertanyaan'
+        'pertanyaan',
+        'struktur_id',
+        'tipe_evaluasi_id'
     ];
 
     public function tipeEvaluasi()
@@ -21,5 +23,13 @@ class Pertanyaan extends Model
     public function struktur()
     {
         return $this->belongsTo(Struktur::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)
+            ->as('jawaban')
+            ->withTimestamps()
+            ->withPivot('jawaban');
     }
 }

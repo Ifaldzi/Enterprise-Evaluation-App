@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\TipeEvaluasi;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class UserPageController extends Controller
@@ -23,8 +25,14 @@ class UserPageController extends Controller
     {
         $answers = $answers->except('_token');
         $score = 0;
-        foreach($answers as $answer)
+        $user = User::find(Auth::id());
+        foreach($answers as $key => $answer)
         {
+            $pertanyaanId = str_replace('jawaban', '', $key);
+            if($user->pertanyaan()->wherePivot('pertanyaan_id', $pertanyaanId)->exists())
+                $user->pertanyaan()->updateExistingPivot($pertanyaanId, ['jawaban' => $answer]);
+            else
+                $user->pertanyaan()->attach($pertanyaanId, ['jawaban' => $answer]);
             $score += $answer;
         }
         return redirect()->route('user.hasil', ['score' => $score, 'tipeEvaluasi' => $tipeEvaluasi]);
@@ -33,6 +41,7 @@ class UserPageController extends Controller
     public function showScore(TipeEvaluasi $tipeEvaluasi, Request $request)
     {
         $score = $request->score;
-        return view('user.hasil', compact('tipeEvaluasi', 'score'));
+        $maxScore = $tipeEvaluasi->pertanyaan->count() * 3;
+        return view('user.hasil', compact('tipeEvaluasi', 'score', 'maxScore'));
     }
 }

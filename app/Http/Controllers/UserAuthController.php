@@ -49,10 +49,13 @@ class UserAuthController extends Controller
         else
         {
             $user = User::where('username', '=', $request->username)->first();
-            if(Crypt::decrypt($user->password) == $request->password)
+            if($user)
             {
-                Auth::login($user);
-                $auth = true;
+                if(Crypt::decrypt($user->password) == $request->password)
+                {
+                    Auth::login($user);
+                    $auth = true;
+                }
             }
         }
 
