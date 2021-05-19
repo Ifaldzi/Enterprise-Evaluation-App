@@ -16,7 +16,8 @@ class CreateHasilsTable extends Migration
         Schema::create('hasil', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->id();
-            $table->integer('score');
+            $table->integer('score_fungsionalitas');
+            $table->integer('score_efektivitas');
             $table->string('keterangan', 256);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

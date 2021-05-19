@@ -11,7 +11,7 @@ class Hasil extends Model
 
     protected $table = 'hasil';
 
-    protected $fillable = ['keterangan'];
+    protected $fillable = ['keterangan', 'score_fungsionalitas', 'score_efektivitas'];
 
     public function users()
     {

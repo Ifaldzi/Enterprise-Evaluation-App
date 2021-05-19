@@ -3,19 +3,39 @@
 @section('content')
     <div class="card">
         <div class="card-header text-center">
-            Hasil Evaluasi {{ $tipeEvaluasi->nama_tipe_evaluasi }}
+            Hasil Evaluasi
         </div>
         <div class="card-body text-center">
             <div class="row mb-2">
                 <div class="col text-right">
-                    Score Evaluasi {{ $tipeEvaluasi->nama_tipe_evaluasi }} :
+                    Skor Efektivitas :
                 </div>
                 <div class="col text-left">
-                    {{ $score }} / {{ $maxScore }}
+                    {{ $hasil->score_efektivitas }}
                 </div>
             </div>
+            <div class="row mb-2">
+                <div class="col text-right">
+                    Skor Fungsionalitas :
+                </div>
+                <div class="col text-left">
+                    {{ $hasil->score_fungsionalitas }}
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col text-right">
+                    Status :
+                </div>
+                <div class="col text-left">
+                    {{ $hasil->keterangan }}
+                </div>
+            </div>
+            @isset($message)
+            <div class="row alert alert-danger">
+                {{ $message }}
+            </div>
+            @endisset
             <div class="row justify-content-center">
-                <a href="#" class="btn btn-primary">Cetak Hasil</a>
                 <a href="{{ route('home') }}" class="btn btn-secondary">Dashboard</a>
             </div>
         </div>
