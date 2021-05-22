@@ -14,15 +14,11 @@ class CreatePertanyaansTable extends Migration
     public function up()
     {
         Schema::create('pertanyaan', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
             $table->unsignedBigInteger('tipe_evaluasi_id');
             $table->string('pertanyaan');
             $table->timestamps();
-            $table->engine = 'InnoDB';
-            $table->foreign('tipe_evaluasi_id')
-                    ->references('id')
-                    ->on('tipe_evaluasi')
-                    ->onCascade('delete');
         });
     }
 

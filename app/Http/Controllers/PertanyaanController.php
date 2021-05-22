@@ -13,15 +13,7 @@ class PertanyaanController extends Controller
 {
     public function index()
     {
-        $data = DB::table('pertanyaan')
-            ->join('tipe_evaluasi', 'tipe_evaluasi.id', '=', 'pertanyaan.tipe_evaluasi_id')
-            ->join('struktur', 'struktur.id', '=', 'pertanyaan.struktur_id')
-            ->get([
-                'pertanyaan.id',
-                'pertanyaan.pertanyaan',
-                'struktur.nama_struktur',
-                'tipe_evaluasi.nama_tipe_evaluasi'
-            ]);
+        $data = Pertanyaan::all();
         return view('admin.pertanyaan', ['data' => $data]);
         // return $data;
     }

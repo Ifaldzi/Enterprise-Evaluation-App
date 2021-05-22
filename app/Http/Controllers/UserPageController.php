@@ -38,7 +38,7 @@ class UserPageController extends Controller
                 $user->pertanyaan()->attach($pertanyaanId, ['jawaban' => $answer]);
             $score += $answer;
         }
-        return redirect()->route('home')->with('message', 'Evaluasi '.$tipeEvaluasi->nama_tipe_evaluasi.' Berhasil Dilaksanakan');
+        return redirect()->route('home')->with('message', 'Evaluasi '.$tipeEvaluasi->nama_evaluasi.' Berhasil Dilaksanakan');
     }
 
     public function showResult()
@@ -69,9 +69,9 @@ class UserPageController extends Controller
                 if($score <= ($maxScore/2))
                 {
                     $approved = false;
-                    $unapprovedEvaluationType->push($type->nama_tipe_evaluasi);
+                    $unapprovedEvaluationType->push($type->nama_evaluasi);
                 }
-                if($type->nama_tipe_evaluasi == 'Fungsionalitas')
+                if($type->nama_evaluasi == 'Fungsionalitas')
                     $hasil->score_fungsionalitas = $score;
                 else
                     $hasil->score_efektivitas = $score;
@@ -88,6 +88,6 @@ class UserPageController extends Controller
             $message = 'Skor' . implode(" & ", $unapprovedEvaluationType->toArray()) . 'Tidak Memenuhi';
             return view('user.hasil', compact('hasil'))->with('message', $message);
         }
-        return "not yet";
+        return redirect()->back()->withErrors(['print_score' => 'Tidak bisa mencetak hasil dikarenakan belum melakukan evaluasi']);
     }
 }

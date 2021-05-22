@@ -9,7 +9,7 @@
         @csrf
         <label for="tipe">Tipe Evaluasi</label><br>
         @foreach ($types as $type)
-            <label for={{ $type->id }}>{{ $type->nama_tipe_evaluasi }}</label>
+            <label for={{ $type->id }}>{{ $type->nama_evaluasi }}</label>
             <input type="radio" name="type" id={{ $type->id }} value={{ $type->id }}>
         @endforeach
         <select name="struktur" id="">

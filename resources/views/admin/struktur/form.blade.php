@@ -6,7 +6,7 @@
 <body>
     <form action={{ route('struktur.store') }} method="POST">
         @csrf
-        <label for="name">Pertanyaan</label><br>
+        <label for="name">Nama Struktur</label><br>
         <input type="text" name="name"><br>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>

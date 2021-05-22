@@ -10,7 +10,7 @@ class TipeEvaluasi extends Model
     protected $table = 'tipe_evaluasi';
 
     protected $fillable = [
-        'nama'
+        'nama_evaluasi'
     ];
 
     public function pertanyaan()

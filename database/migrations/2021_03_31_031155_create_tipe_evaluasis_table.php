@@ -14,8 +14,9 @@ class CreateTipeEvaluasisTable extends Migration
     public function up()
     {
         Schema::create('tipe_evaluasi', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->string('nama');
+            $table->string('nama_evaluasi');
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@
             @foreach ($types as $type)
                 <option value={{ $type->id }} @if ($type->id == $pertanyaan->tipe_evaluasi_id)
                     selected = "selected"
-                @endif>{{ $type->nama_tipe_evaluasi }}</option>
+                @endif>{{ $type->nama_evaluasi }}</option>
             @endforeach
         </select>
         <br>

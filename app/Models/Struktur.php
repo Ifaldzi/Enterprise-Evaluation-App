@@ -12,7 +12,7 @@ class Struktur extends Model
     protected $table = 'struktur';
 
     protected $fillable = [
-        'nama'
+        'nama_struktur'
     ];
 
     public function pertanyaan()

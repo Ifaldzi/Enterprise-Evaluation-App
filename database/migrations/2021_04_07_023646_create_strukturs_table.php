@@ -14,8 +14,9 @@ class CreateStruktursTable extends Migration
     public function up()
     {
         Schema::create('struktur', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
             $table->id();
-            $table->string("nama");
+            $table->string("nama_struktur");
             $table->timestamps();
         });
     }

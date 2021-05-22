@@ -8,18 +8,21 @@
         {{ session('message') }}
     </div>
     @endif
+    @error('print_score')
+        <div class="row alert alert-danger">{{ $message }}</div>
+    @enderror
     <div class="row">
         <div class="col card bg-info mx-2 align-items-center">
             <div class="card-body text-center">
                 <p>Evaluasi A...</p>
-                <a href="{{ route('user.pertanyaan', App\Models\TipeEvaluasi::find(46)) }}" class="stretched-link"></a>
+                <a href="{{ route('user.pertanyaan', App\Models\TipeEvaluasi::where('nama_evaluasi', '=', 'Fungsionalitas')->first()) }}" class="stretched-link"></a>
             </div>
         </div>
 
         <div class="col card mx-2">
             <div class="card-body">
                 <p>Evaluasi B...</p>
-                <a href="{{ route('user.pertanyaan', App\Models\TipeEvaluasi::find(47)) }}" class="stretched-link"></a>
+                <a href="{{ route('user.pertanyaan', App\Models\TipeEvaluasi::where('nama_evaluasi', '=', 'Efektivitas')->first()) }}" class="stretched-link"></a>
             </div>
         </div>
     </div>

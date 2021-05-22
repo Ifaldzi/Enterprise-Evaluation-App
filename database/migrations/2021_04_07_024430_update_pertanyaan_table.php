@@ -20,6 +20,10 @@ class UpdatePertanyaanTable extends Migration
                 ->references('id')
                 ->on('struktur')
                 ->onDelete('cascade');
+            $table->foreign('tipe_evaluasi_id')
+                ->references('id')
+                ->on('tipe_evaluasi')
+                ->onCascade('delete');
         });
     }
 
@@ -33,6 +37,8 @@ class UpdatePertanyaanTable extends Migration
         Schema::table('pertanyaan', function(Blueprint $table){
             $table->dropColumn('struktur_id');
             $table->dropForeign('pertanyaan_struktur_id_foreign');
+            $table->dropColumn('tipe_evaluasi_id');
+            $table->dropForeign('pertanyaan_tipe_evaluasi_id_foreign');
         });
     }
 }

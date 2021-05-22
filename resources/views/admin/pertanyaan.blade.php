@@ -17,8 +17,8 @@
                 <td>
                     <a href={{ route('detail_pertanyaan', $pertanyaan->id) }}>{{ $pertanyaan->pertanyaan }}</a>
                 </td>
-                <td>{{ $pertanyaan->nama_tipe_evaluasi}}</td>
-                <td>{{ $pertanyaan->nama_struktur }}</td>
+                <td>{{ $pertanyaan->tipeEvaluasi->nama_evaluasi}}</td>
+                <td>{{ $pertanyaan->struktur->nama_struktur }}</td>
                 <td class="form-inline">
                     <a href={{ route('detail_pertanyaan', $pertanyaan->id) }} class="btn btn-warning form-group" role="button">Edit</a>
                     <form action={{ route('delete_pertanyaan', $pertanyaan->id) }} method="POST" class="form-group">
