@@ -23,8 +23,8 @@ Route::get('/login', function () {
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/dashboard', 'UserPageController@index')->name('home');
 
-    Route::get('/pertanyaan/{tipeEvaluasi}', 'UserPageController@showQuestion')->name('user.pertanyaan');
-    Route::post('/pertanyaan/{tipeEvaluasi}/submit', 'UserPageController@submitAnswer')->name('user.submit_answer');
+    Route::get('/evaluasi/pertanyaan/{tipeEvaluasi}', 'UserPageController@showQuestion')->name('user.pertanyaan');
+    Route::post('/evaluasi/pertanyaan/{tipeEvaluasi}/submit', 'UserPageController@submitAnswer')->name('user.submit_answer');
     Route::get('/evaluasi/hasil', 'UserPageController@showResult')->name('user.lihat_hasil');
     Route::get('/hasil', 'UserPageController@printResult')->name('user.hasil_evaluasi');
 
