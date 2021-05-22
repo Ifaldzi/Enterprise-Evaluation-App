@@ -21,9 +21,7 @@ Route::get('/login', function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/dashboard', function () {
-        return view('user.dashboard');
-    })->name('home');
+    Route::get('/dashboard', 'UserPageController@index')->name('home');
 
     Route::get('/pertanyaan/{tipeEvaluasi}', 'UserPageController@showQuestion')->name('user.pertanyaan');
     Route::post('/pertanyaan/{tipeEvaluasi}/submit', 'UserPageController@submitAnswer')->name('user.submit_answer');

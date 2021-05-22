@@ -18,6 +18,14 @@ class UserPageController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+        if(auth()->user()->is_admin)
+            return redirect()->route('admin.dashboard');
+        $hasil = Hasil::where('user_id', '=', Auth::id())->orderBy('created_at', 'desc')->first();
+        return view('user.dashboard', compact('hasil'));
+    }
+
     public function showQuestion(TipeEvaluasi $tipeEvaluasi)
     {
         $pertanyaan = $tipeEvaluasi->pertanyaan->sortBy('struktur_id')->values()->all();

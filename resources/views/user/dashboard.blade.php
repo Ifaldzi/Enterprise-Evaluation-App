@@ -14,6 +14,50 @@
         <div class="row alert alert-danger">{{ $message }}</div>
     @enderror
 
+    @if ($hasil)
+    <div class="row mb-3">
+        <div class="col-8 p-0 mx-auto card">
+            <div class="text-center card-header">
+                Hasil Evaluasi Terakhir
+            </div>
+            <div class="text-center card-body">
+                <div class="row mb-2">
+                    <div class="col text-right">
+                        Tanggal Evaluasi :
+                    </div>
+                    <div class="col text-left">
+                        {{ $hasil->created_at }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col text-right">
+                        Skor Efektivitas :
+                    </div>
+                    <div class="col text-left">
+                        {{ $hasil->score_efektivitas }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col text-right">
+                        Skor Fungsionalitas :
+                    </div>
+                    <div class="col text-left">
+                        {{ $hasil->score_fungsionalitas }}
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col text-right">
+                        Status :
+                    </div>
+                    <div class="col text-left">
+                        {{ $hasil->keterangan }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="row">
         <div class="col-8 mx-auto btn btn-info py-5">
             <h2>Evaluasi</h2>
@@ -26,10 +70,6 @@
             <h3>Cetak Hasil</h3>
             <a href="{{ route('user.hasil_evaluasi') }}" class="stretched-link"></a>
         </div>
-    </div>
-
-    <div class="row">
-        <a href="{{ route('user.lihat_hasil') }}" class="btn btn-primary">Lihat Hasil</a>
     </div>
 
     <form action="{{ route('logout')}}" method="POST">

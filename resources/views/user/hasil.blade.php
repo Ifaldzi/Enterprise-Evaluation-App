@@ -8,6 +8,14 @@
         <div class="card-body text-center">
             <div class="row mb-2">
                 <div class="col text-right">
+                    Tanggal Evaluasi :
+                </div>
+                <div class="col text-left">
+                    {{ $hasil->created_at }}
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col text-right">
                     Skor Efektivitas :
                 </div>
                 <div class="col text-left">
