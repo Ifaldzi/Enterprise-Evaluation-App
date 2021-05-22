@@ -3,33 +3,33 @@
 @section('content')
 <div class="container">
     <h2>User Dashboard</h2>
+
     @if (session('message'))
-    <div class="row alert alert-success">
-        {{ session('message') }}
-    </div>
+        <div class="row alert alert-success">
+            {{ session('message') }}
+        </div>
     @endif
+
     @error('print_score')
         <div class="row alert alert-danger">{{ $message }}</div>
     @enderror
-    <div class="row">
-        <div class="col card bg-info mx-2 align-items-center">
-            <div class="card-body text-center">
-                <p>Evaluasi A...</p>
-                <a href="{{ route('user.pertanyaan', App\Models\TipeEvaluasi::where('nama_evaluasi', '=', 'Fungsionalitas')->first()) }}" class="stretched-link"></a>
-            </div>
-        </div>
 
-        <div class="col card mx-2">
-            <div class="card-body">
-                <p>Evaluasi B...</p>
-                <a href="{{ route('user.pertanyaan', App\Models\TipeEvaluasi::where('nama_evaluasi', '=', 'Efektivitas')->first()) }}" class="stretched-link"></a>
-            </div>
+    <div class="row">
+        <div class="col-8 mx-auto btn btn-info py-5">
+            <h2>Evaluasi</h2>
+            <a href="{{ route('user.evaluasi') }}" class="stretched-link"></a>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-8 mx-auto btn btn-warning py-2 my-auto">
+            <h3>Cetak Hasil</h3>
+            <a href="{{ route('user.hasil_evaluasi') }}" class="stretched-link"></a>
         </div>
     </div>
 
     <div class="row">
         <a href="{{ route('user.lihat_hasil') }}" class="btn btn-primary">Lihat Hasil</a>
-        <a href="{{ route('user.hasil_evaluasi') }}" class="btn btn-warning">Cetak Hasil</a>
     </div>
 
     <form action="{{ route('logout')}}" method="POST">

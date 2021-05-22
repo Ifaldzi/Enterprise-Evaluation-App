@@ -26,6 +26,16 @@ class UserPageController extends Controller
 
     public function submitAnswer(TipeEvaluasi $tipeEvaluasi, Request $answers)
     {
+        $pertanyaan = $tipeEvaluasi->pertanyaan;
+        $valids = array();
+        foreach ($pertanyaan as $data) {
+            $valids['jawaban'.$data->id] = "required";
+        }
+        $validator = validator($answers->all(), $valids);
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors(['submit' => 'Semua pertanyaan belum terisi'])->withInput($answers->all());
+        }
         $answers = $answers->except('_token');
         $score = 0;
         $user = User::find(Auth::id());

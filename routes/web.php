@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/evaluasi/hasil', 'UserPageController@showResult')->name('user.lihat_hasil');
     Route::get('/hasil', 'UserPageController@printResult')->name('user.hasil_evaluasi');
 
+    Route::view('/evaluasi', 'user.evaluasi')->name('user.evaluasi');
+
     Route::group(['middleware' => 'admin'], function(){
         Route::get('/admin/dashboard', 'AdminController@showDashboard')->name('admin.dashboard');
         Route::get('/admin/pertanyaan', 'PertanyaanController@index')->name('list_pertanyaan');
