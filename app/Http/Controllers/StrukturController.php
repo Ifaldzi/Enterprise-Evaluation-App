@@ -52,7 +52,7 @@ class StrukturController extends Controller
             'nama_struktur' =>$request->name
         ]);
 
-        return redirect()->route('struktur.index');
+        return redirect()->route('struktur.index')->with('message', 'Struktur berhasil ditambahkan');
     }
 
     /**
@@ -103,7 +103,7 @@ class StrukturController extends Controller
         $struktur->nama_struktur = $request->name;
         $struktur->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Struktur berhasil diupdate');
     }
 
     /**
@@ -116,6 +116,6 @@ class StrukturController extends Controller
     {
         $struktur->delete();
 
-        return redirect()->route('struktur.index');
+        return redirect()->route('struktur.index')->with('message', 'Struktur dihapus');
     }
 }

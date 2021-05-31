@@ -43,7 +43,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-                                <a href={{ route('register') }} class="p-3">Register</a>
                             </div>
                         </div>
                     </form>

@@ -64,7 +64,7 @@ class UserController extends Controller
             'username' => $request->username,
             'password' => Crypt::encrypt(Str::random(8))
         ]);
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('message', 'User berhasil ditambahkan');
     }
 
     /**
@@ -114,7 +114,7 @@ class UserController extends Controller
             'email' => $request->email
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'User berhasil diupdate');
     }
 
     /**
@@ -126,6 +126,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('message', 'User berhasil dihapus');
     }
 }

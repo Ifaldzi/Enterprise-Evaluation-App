@@ -3,6 +3,11 @@
 @section('title', 'Pertanyaan')
 
 @section('content')
+    @if (session('message'))
+        <div class="alert alert-success">
+            <strong>{{ session('message') }}</strong>
+        </div>
+    @endif
     <table class="table table-hover table-striped">
         <thead>
         <tr>

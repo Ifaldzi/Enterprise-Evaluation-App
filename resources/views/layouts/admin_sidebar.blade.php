@@ -55,14 +55,7 @@
                       </p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon far fa-circle"></i>
-                      <p>
-                        Tipe Evaluasi
-                      </p>
-                    </a>
-                  </li>
+
                   <li class="nav-item">
                     <a href="{{ route('struktur.index') }}" class="nav-link">
                       <i class="nav-icon far fa-circle"></i>

@@ -40,11 +40,11 @@ class PertanyaanController extends Controller
 
         if($question->save())
         {
-            return redirect()->route('list_pertanyaan');
+            return redirect()->route('list_pertanyaan')->with('message', 'Berhasil menambahkan pertanyaan');
         }
         else
         {
-            return redirect()->route('form_pertanyaan');
+            return redirect()->route('form_pertanyaan')->withErrors('Gagal menambahkan pertanyaan');
         }
     }
 
@@ -82,11 +82,11 @@ class PertanyaanController extends Controller
 
         if($question->save())
         {
-            return redirect()->route('list_pertanyaan');
+            return redirect()->route('detail_pertanyaan', $id)->with('message', 'Berhasil mengupdate pertanyaan');
         }
         else
         {
-            return redirect()->route('detail_pertanyaan');
+            return redirect()->route('detail_pertanyaan', $id);
         }
     }
 
@@ -95,7 +95,7 @@ class PertanyaanController extends Controller
         $question = Pertanyaan::find($id);
         if($question->delete())
         {
-            return redirect()->route('list_pertanyaan');
+            return redirect()->route('list_pertanyaan')->with('message', 'Pertanyaan dihapus');
         }
         else
         {
