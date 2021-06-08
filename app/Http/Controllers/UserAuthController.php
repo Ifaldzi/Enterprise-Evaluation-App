@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -51,10 +52,17 @@ class UserAuthController extends Controller
             $user = User::where('username', '=', $request->username)->first();
             if($user)
             {
-                if(Crypt::decrypt($user->password) == $request->password)
+                try
                 {
-                    Auth::login($user);
-                    $auth = true;
+                    if(Crypt::decrypt($user->password) == $request->password)
+                    {
+                        Auth::login($user);
+                        $auth = true;
+                    }
+                }
+                catch (Exception $exception)
+                {
+
                 }
             }
         }
