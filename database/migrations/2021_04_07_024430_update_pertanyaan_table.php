@@ -35,10 +35,10 @@ class UpdatePertanyaanTable extends Migration
     public function down()
     {
         Schema::table('pertanyaan', function(Blueprint $table){
-            $table->dropColumn('struktur_id');
             $table->dropForeign('pertanyaan_struktur_id_foreign');
-            $table->dropColumn('tipe_evaluasi_id');
+            $table->dropColumn('struktur_id');
             $table->dropForeign('pertanyaan_tipe_evaluasi_id_foreign');
+            $table->dropColumn('tipe_evaluasi_id');
         });
     }
 }

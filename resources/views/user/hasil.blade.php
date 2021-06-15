@@ -11,7 +11,7 @@
                     Tanggal Evaluasi :
                 </div>
                 <div class="col text-left">
-                    {{ $hasil->created_at }}
+                    {{ $hasil->updated_at }}
                 </div>
             </div>
             <div class="row mb-2">

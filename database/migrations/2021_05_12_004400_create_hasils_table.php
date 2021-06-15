@@ -18,7 +18,7 @@ class CreateHasilsTable extends Migration
             $table->id();
             $table->integer('score_fungsionalitas')->nullable();
             $table->integer('score_efektivitas')->nullable();
-            $table->string('keterangan', 256);
+            $table->string('keterangan', 256)->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('user_id')

@@ -14,7 +14,7 @@
         <div class="row alert alert-danger">{{ $message }}</div>
     @enderror
 
-    @if ($hasil)
+    @if ($hasil && $hasil->keterangan)
     <div class="row mb-3">
         <div class="col-8 p-0 mx-auto card">
             <div class="text-center card-header">
@@ -26,7 +26,7 @@
                         Tanggal Evaluasi :
                     </div>
                     <div class="col text-left">
-                        {{ $hasil->created_at }}
+                        {{ $hasil->updated_at }}
                     </div>
                 </div>
                 <div class="row mb-2">
