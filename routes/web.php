@@ -25,10 +25,11 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/evaluasi/pertanyaan/{tipeEvaluasi}', 'UserPageController@showQuestion')->name('user.pertanyaan');
     Route::post('/evaluasi/pertanyaan/{tipeEvaluasi}/submit', 'UserPageController@submitAnswer')->name('user.submit_answer');
-    Route::get('/evaluasi/hasil', 'UserPageController@showResult')->name('user.lihat_hasil');
+    // Route::get('/evaluasi/hasil', 'UserPageController@showResult')->name('user.lihat_hasil');
     Route::get('/hasil', 'UserPageController@printResult')->name('user.hasil_evaluasi');
+    Route::post('/evaluasi', 'UserPageController@reattemptEvaluation')->name('user.ulang_evaluasi');
 
-    Route::view('/evaluasi', 'user.evaluasi')->name('user.evaluasi');
+    Route::get('/evaluasi', 'UserPageController@showEvaluationPage')->name('user.evaluasi');
 
     Route::group(['middleware' => 'admin'], function(){
         Route::get('/admin/dashboard', 'AdminController@showDashboard')->name('admin.dashboard');
