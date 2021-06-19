@@ -143,6 +143,6 @@ class UserPageController extends Controller
     {
         $user = Auth::user();
         Hasil::create(['user_id' => $user->id]);
-        return route('user.evaluasi');
+        return redirect()->route('user.evaluasi');
     }
 }
